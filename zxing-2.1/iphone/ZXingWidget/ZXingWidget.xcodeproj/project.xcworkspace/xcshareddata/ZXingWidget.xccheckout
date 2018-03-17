@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>ED9B4A26-452D-4953-B9CE-26369851E9E5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZXingWidget</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>87C30AC8-B3B3-4C56-A63C-51217A734FFC</key>
+		<string>https://192.168.1.200/svn/IOS</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>branches/myanycam/zxing-2.1/iphone/ZXingWidget/ZXingWidget.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>87C30AC8-B3B3-4C56-A63C-51217A734FFC</key>
+		<string>../../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>87C30AC8-B3B3-4C56-A63C-51217A734FFC</key>
+		<string>https://192.168.1.200/svn/IOS</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://192.168.1.200/svn/IOS/branches/myanycam/zxing-2.1/iphone/ZXingWidget/ZXingWidget.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>87C30AC8-B3B3-4C56-A63C-51217A734FFC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>87C30AC8-B3B3-4C56-A63C-51217A734FFC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>workspace</string>
+		</dict>
+	</array>
+</dict>
+</plist>

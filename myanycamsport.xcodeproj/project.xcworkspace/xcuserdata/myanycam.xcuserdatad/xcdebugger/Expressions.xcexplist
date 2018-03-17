@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[EGOPhotoImageView setPhoto:]:EGOPhotoImageView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(MyPhoto *)0x2195bab0">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[VideoPlayerViewController moviePlayerLoadStateChanged:]:VideoPlayerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(MPMoviePlayerController *)0xd0893e0">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ImageBrowserNavigationController viewDidLoad]:ImageBrowserNavigationController.m">
+      </ContextState>
+      <ContextState
+         contextName = "open_audio:VideoReocderEngine.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "0x00887f10">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[EGOPhotoImageView setupImageViewWithImage:]:EGOPhotoImageView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(&lt;MyPhoto *)0xee1f610">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[cameraViewViewController playButtonAction:]:cameraViewViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[EventRecordViewCell updateView]:EventRecordViewCell.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

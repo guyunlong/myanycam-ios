@@ -1,0 +1,78 @@
+//
+// Prefix header for all source files of the 'myanycam' target in the 'myanycam' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>  
+    #include <CoreGraphics/CoreGraphics.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <dispatch/dispatch.h>
+#import <AssetsLibrary/ALAsset.h>
+#import <AssetsLibrary/ALAssetRepresentation.h>
+#import <ImageIO/CGImageSource.h>
+#import <ImageIO/CGImageProperties.h>
+#import "ConstantHeader.h"
+#import "ShareAlertView.h"
+#import "MYAlertView.h"
+#import "CameraInfoData.h"
+#import "MYBaseButton.h"
+#import "MYGestureRecognizer.h"
+#import "MYUIPickerView.h"
+#import "UIView+MYViewFunction.h"
+#import "AsyncSocket.h"
+#import "BuildSocketData.h"
+#import "WifiSettingDelegate.h"
+#import "WifiSelectDelegate.h"
+#import "ToolClass.h"
+#import "UIImage+MYUImageTool.h"
+#import "ViewToolClass.h"
+#import "RecordVideoSetCellData.h"
+#import "CustomSwitch.h"
+#import "UIButton+ButtonToolClass.h"
+#import "MYTapGestureRecognizer.h"
+#import "AlertSettingData.h"
+#import "RecordVideoSettingData.h"
+#import "TimePeriodSelectData.h"
+#import "WeekData.h"
+#import "MyMD5.h"
+#import "CustomDrawLineView.h"
+#import "UIDevice+Helper.h"
+#import "MediaData.h"
+#import "EGOPhotoGlobal.h"
+#import "UIView+Explode.h"
+#import "RecordSetDelegate.h"
+#import "AlertSettingDelegate.h"
+#import "UIButton+helper.h"
+#import "MYImageView.h"
+#import "MobClick.h"
+
+
+#endif
+
+
+
+
+
+
+#ifdef DEBUG
+#   define TWDLog(fmt, ...) NSLog((@"\n%s\n" fmt), __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#else
+#   define TWDLog(...)
+#endif
+
+
+//
+//  Logs regardless of debug setting.
+//
+#define TWALog(fmt, ...) NSLog((@"\n%s\n" fmt), __PRETTY_FUNCTION__, ##__VA_ARGS__)
+
+
+
