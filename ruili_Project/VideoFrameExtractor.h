@@ -26,6 +26,17 @@
 #include "libswscale/swscale.h"
 #include "libavcodec/avcodec.h"
 
+
+@interface VideoSpsPps:NSObject{
+    uint8_t *_sps;
+    NSInteger _spsSize;
+    uint8_t *_pps;
+    NSInteger _ppsSize;
+}
+-(void)setSps:(uint8_t*)sps size:(int)size;
+-(void)setPps:(uint8_t*)pps size:(int)size;
+@end
+
 @interface VideoFrameExtractor : NSObject {
 	AVFormatContext *pFormatCtx;//存储格式信息
 	AVCodecContext *pCodecCtx;//存储编解码信息
@@ -41,6 +52,7 @@
     uint8_t  *rawData;
     int bytesDecoded;
     AVFrame  *_imageFrame;
+    
 }
 
 @property (assign, nonatomic) AVFrame * currentFrame;
@@ -50,6 +62,7 @@
 
 /* Last decoded picture as UIImage */
 @property (nonatomic, readonly) UIImage *currentImage;
+@property (retain, nonatomic) VideoSpsPps *ppsSps;
 
 /* Size of video frame */
 @property (nonatomic, readonly) int sourceWidth, sourceHeight;

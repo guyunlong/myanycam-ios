@@ -1,1 +1,7 @@
 # myanycam-ios
+1、更新ffmpeg版本，版本为3.4
+2、修改ffmpeg源码，修改点：
+AVMediaType修改为FFMAVMediaType,这样枚举类型和xcode9里面AVMediaType的不冲突
+3、修改若干在xcode9中的错误，可以xcode9编译通过
+4、在VideoFrameExtractor中添加VideoSpsPps数据结构，从idr帧中获取sps和pps信息，见数据结构中的 _sps和_pps，其长度为__spsSize和_ppsSize
+

@@ -9,6 +9,86 @@
 #import "VideoFrameExtractor.h"
 #import "KxMovieDecoder.h"
 
+@implementation VideoSpsPps;
+-(id)init{
+    self = [super init];
+    _spsSize = _ppsSize = 0;
+    return self;
+}
+-(void)dealloc{
+    if (_sps) {
+        free(_sps);
+    }
+    if (_pps) {
+        free(_pps);
+    }
+    [super dealloc];
+}
+-(void)getSpsAndPpsInfo:(uint8_t*)buf size:(NSUInteger)size{
+    //主要是解析idr前面的sps pps
+    if (_ppsSize >0 && _spsSize > 0) {
+        return;
+    }
+    int last = 0;
+    for (int i = 2; i <= size; ++i){
+        if (i == size) {
+            if (last) {
+                [self parseFrame:buf+last len:i - last];
+            }
+        } else if (buf[i - 2]== 0x00 && buf[i - 1]== 0x00 && buf[i] == 0x01) {
+            if (last) {
+                int size = i - last - 3;
+                if (buf[i - 3]) ++size;
+                [self parseFrame:buf + last len:size];
+            }
+            last = i + 1;
+        }
+    }
+}
+-(void)parseFrame:(uint8_t*)buf len:(int)len{
+    
+    switch (buf[0] & 0x1f){
+        case 7: // SPS
+            NSLog(@"sps len is %d",len);
+            [self setSps:buf size:len];
+            break;
+            
+        case 8: // PPS
+            NSLog(@"pps len is %d",len);
+            [self setPps:buf size:len];
+            break;
+            
+        case 5:
+            NSLog(@"idr len is %d",len);
+            
+            break;
+        case 1:
+            NSLog(@"B/P len is %d",len);
+            break;
+            
+        default:
+            break;
+    }
+    
+    return ;
+}
+-(void)setSps:(uint8_t*)sps size:(int)size{
+    if (_spsSize > 0) {
+        return;
+    }
+    _spsSize = size;
+    _sps = malloc(_spsSize);
+    memcpy(_sps, sps, _spsSize);
+}
+-(void)setPps:(uint8_t*)pps size:(int)size{
+    if (_ppsSize > 0) {
+        return;
+    }
+    _ppsSize = size;
+    _pps = malloc(_ppsSize);
+    memcpy(_pps, pps, _ppsSize);
+}
+@end
 
 @interface VideoFrameExtractor (private)
 -(void)convertFrameToRGB;
@@ -64,7 +144,7 @@
         return nil;
     }
     
-    
+    _ppsSps = [[[VideoSpsPps alloc] init] retain];
     DebugLog(@"~~~~~~~~~~~~~~~wid is %d ,het is %d",width,height);
     
     av_register_all();
@@ -157,6 +237,9 @@
 -(int)manageData:(NSData *)dataBuffer
 {
 //    DebugLog(@"decode video");
+    
+    [_ppsSps getSpsAndPpsInfo:(uint8_t*)[dataBuffer bytes] size:[dataBuffer length]];
+    
     int frameFinished=0;
 
 	packet.data = (uint8_t*)[dataBuffer bytes];//
