@@ -11,7 +11,7 @@
 #include "libswscale/swscale.h"
 #include "libavcodec/avcodec.h"
 #include "libavutil/time.h"
-
+#include "VideoFrameExtractor.h"
 //#include <libavutil/opt.h>
 
 @interface VideoReocderEngine : NSObject{
@@ -44,6 +44,7 @@
 - (BOOL)WriteAudio:(char *)pAudioBuff nlen:(int)nLen;
 - (BOOL)WriteH264Video:(char*)pVideoBuff len:(int)nLen;
 - (void)Close;
+@property(nonatomic,retain)VideoSpsPps *spspps;
 
 
 @end

@@ -32,7 +32,15 @@
     NSInteger _spsSize;
     uint8_t *_pps;
     NSInteger _ppsSize;
+    uint8_t * _idr;
+    uint8_t * _idrLength;
 }
+-(NSInteger)getSpsSize;
+-(NSInteger)getPpsSize;
+-(uint8_t*)getSps;
+-(uint8_t*)getPps;
+-(uint8_t*)getIdr;
+-(NSInteger)getIdrLength;
 -(void)setSps:(uint8_t*)sps size:(int)size;
 -(void)setPps:(uint8_t*)pps size:(int)size;
 @end

@@ -24,6 +24,24 @@
     }
     [super dealloc];
 }
+-(NSInteger)getSpsSize{
+    return _spsSize;
+}
+-(NSInteger)getPpsSize{
+    return _ppsSize;
+}
+-(uint8_t*)getSps{
+    return _sps;
+}
+-(uint8_t*)getPps{
+    return _pps;
+}
+-(uint8_t*)getIdr{
+    return _idr;
+}
+-(uint8_t*)getIdrLength{
+    return _idrLength;
+}
 -(void)getSpsAndPpsInfo:(uint8_t*)buf size:(NSUInteger)size{
     //主要是解析idr前面的sps pps
     if (_ppsSize >0 && _spsSize > 0) {
@@ -44,6 +62,8 @@
             last = i + 1;
         }
     }
+    [self setIdrFrame:buf size:size];
+    
 }
 -(void)parseFrame:(uint8_t*)buf len:(int)len{
     
@@ -52,6 +72,7 @@
             NSLog(@"sps len is %d",len);
             NSLog(@"%02x",buf[0]);
             [self setSps:buf size:len];
+            
             break;
             
         case 8: // PPS
@@ -72,6 +93,12 @@
     }
     
     return ;
+}
+-(void)setIdrFrame:(uint8_t*)idr size:(int)length{
+    
+    _idrLength = length;
+    _idr = malloc(length);
+    memcpy(_idr, idr, _idrLength);
 }
 -(void)setSps:(uint8_t*)sps size:(int)size{
     if (_spsSize > 0) {
