@@ -253,6 +253,19 @@
 //    DebugLog(@">>>>>>>>>>cost time = %f", deltaTime);
     
     if (bytesDecoded < 0)   return -1;
+    //add by gyl
+    if(_startRecord){
+        _recordEngine = [[recordvideo alloc] initRec:15 cnx:pCodecCtx];
+        [_recordEngine writeHeader];
+        _startRecord = NO;
+    }
+    if (_recording) {
+        [_recordEngine writeVidBuffer:pFrame];
+    }
+    if (_endRecord) {
+        _endRecord = NO;
+        [_recordEngine writeTrailer];
+    }
 //    av_free_packet(&packet);
     return  1;
 }

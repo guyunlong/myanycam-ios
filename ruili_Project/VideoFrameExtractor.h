@@ -25,7 +25,7 @@
 #import "libavformat/avformat.h"
 #include "libswscale/swscale.h"
 #include "libavcodec/avcodec.h"
-
+#include "recordvideo.h"
 
 @interface VideoSpsPps:NSObject{
     uint8_t *_sps;
@@ -57,7 +57,10 @@
 
 @property (assign, nonatomic) AVFrame * currentFrame;
 
-
+@property (nonatomic,retain) recordvideo *recordEngine;
+@property (nonatomic,assign) BOOL startRecord;
+@property (nonatomic,assign) BOOL recording;
+@property (nonatomic,assign) BOOL endRecord;
 -(int) bytesDecoded;
 
 /* Last decoded picture as UIImage */

@@ -2378,15 +2378,21 @@
         _flagStartRecord = NO;
 
         imageView = [UIImage imageNamed:norStr];
+        [self.videoDecodeEngine setRecording:NO];
+        [self.videoDecodeEngine setEndRecord:YES];
 
-        [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:0];
+       // [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:0];
  
     }
     else
     {
         _flagStartRecord = YES;
-        [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:1];
+      //  [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:1];
         imageView = [UIImage imageNamed:pressStr];
+        [self.videoDecodeEngine setStartRecord:YES];
+        [self.videoDecodeEngine setRecording:YES];
+        
+        
 
 
     }

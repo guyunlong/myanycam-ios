@@ -505,6 +505,7 @@
 		A40AC065205D682B00D9AB80 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AC05E205D682B00D9AB80 /* libavutil.a */; };
 		A40AC067205D688700D9AB80 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AC066205D688700D9AB80 /* VideoToolbox.framework */; };
 		A40AC06B205D68AD00D9AB80 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A40AC06A205D68AD00D9AB80 /* libstdc++.6.tbd */; };
+		A4DF210E205FF23C00844764 /* recordvideo.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DF210C205FF23B00844764 /* recordvideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1290,6 +1291,8 @@
 		A40AC066205D688700D9AB80 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A40AC068205D689C00D9AB80 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		A40AC06A205D68AD00D9AB80 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		A4DF210C205FF23B00844764 /* recordvideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recordvideo.m; sourceTree = "<group>"; };
+		A4DF210D205FF23B00844764 /* recordvideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recordvideo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2352,6 +2355,10 @@
 		9997E3A216F9DF9500DC80E7 /* Netengine */ = {
 			isa = PBXGroup;
 			children = (
+				A4DF210D205FF23B00844764 /* recordvideo.h */,
+				A4DF210C205FF23B00844764 /* recordvideo.m */,
+				6C95E21116FC03E400A8A131 /* VideoFrameExtractor.m */,
+				6C95E21216FC03E400A8A131 /* VideoFrameExtractor.h */,
 				6C0FCEF01705426100BCE79B /* VideoReocderEngine.h */,
 				6C0FCEF11705426100BCE79B /* VideoReocderEngine.m */,
 				6CFD0E1A181E4B5000A533CD /* MusicPlayEngine.h */,
@@ -2383,8 +2390,6 @@
 				6CE792F51701327900748E3A /* AsyncSocket.m */,
 				6CE792F61701327900748E3A /* AsyncUdpSocket.h */,
 				6CE792F21701327900748E3A /* AsyncUdpSocket.m */,
-				6C95E21116FC03E400A8A131 /* VideoFrameExtractor.m */,
-				6C95E21216FC03E400A8A131 /* VideoFrameExtractor.h */,
 				6C1A3339181A124D009B0675 /* CameraGridImageDownload.h */,
 				6C1A333A181A124D009B0675 /* CameraGridImageDownload.m */,
 			);
@@ -2814,6 +2819,7 @@
 				6CF1314B18CD960A00E4809E /* CameraHLSDemoViewController.m in Sources */,
 				59DCFBAE16AA743A008F351E /* cameraViewViewController.m in Sources */,
 				59D47C5316B8F1CD00DF09C7 /* navButton.m in Sources */,
+				A4DF210E205FF23C00844764 /* recordvideo.m in Sources */,
 				597DC38D16BA103A0033E9E7 /* navTitleLabel.m in Sources */,
 				6CAABCBB16D74405008FFD3D /* APSetingViewController.m in Sources */,
 				6C2B57E8183DB9A7002F7E6E /* QRCodeGenerator.m in Sources */,
