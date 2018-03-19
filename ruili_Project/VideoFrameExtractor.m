@@ -50,6 +50,7 @@
     switch (buf[0] & 0x1f){
         case 7: // SPS
             NSLog(@"sps len is %d",len);
+            NSLog(@"%02x",buf[0]);
             [self setSps:buf size:len];
             break;
             

@@ -30,7 +30,7 @@
 
 
 @interface cameraViewViewController ()
-
+@property(nonatomic,retain)NSString*appRecoderPath;
 @end
 
 @implementation cameraViewViewController
@@ -60,6 +60,7 @@
 @synthesize videoQualityView;
 @synthesize haveAutoChangeVideoSize;
 @synthesize shareCameraAlertView;
+@synthesize recoderEngine;
 //@synthesize audiodata;
 
 -(AppDelegate *)appDelegate
@@ -1961,7 +1962,9 @@
                 }
                 
                 flag = [self.videoDecodeEngine manageData:mediaData.mediaData];
-                
+                if (_flagStartRecord) {
+                    [recoderEngine WriteH264Video:mediaData.mediaData.bytes len:mediaData.mediaData.length];
+                }
                 
                 if (flag == 1) {
                     
@@ -2378,19 +2381,53 @@
         _flagStartRecord = NO;
 
         imageView = [UIImage imageNamed:norStr];
-        [self.videoDecodeEngine setRecording:NO];
-        [self.videoDecodeEngine setEndRecord:YES];
+       // [self.videoDecodeEngine setRecording:NO];
+        //[self.videoDecodeEngine setEndRecord:YES];
 
        // [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:0];
+
+        
+        [recoderEngine Close];
+        [self saveVideo];
+
  
     }
     else
     {
+
         _flagStartRecord = YES;
       //  [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:1];
         imageView = [UIImage imageNamed:pressStr];
-        [self.videoDecodeEngine setStartRecord:YES];
-        [self.videoDecodeEngine setRecording:YES];
+        //[self.videoDecodeEngine setStartRecord:YES];
+       // [self.videoDecodeEngine setRecording:YES];
+
+        
+       // [[AppDelegate getAppDelegate].mygcdSocketEngine sendManualRecordWithSwith:[MYDataManager shareManager].userInfoData.userId cameraid:self.cameraInfo.cameraId swithFlag:1];
+        imageView = [UIImage imageNamed:pressStr];
+        
+        if (recoderEngine == nil) {
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            //获取路径,参数NSDocumentDirectory要获取那种路径
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];//获得需要的路径
+            NSLog(documentsDirectory);
+            //切换成当前目录
+            [fileManager changeCurrentDirectoryPath:[documentsDirectory stringByExpandingTildeInPath]];
+            
+            //创建文件fileName文件名称，contents文件的内容，如果开始没有内容可以设置为nil，attributes文件的属性，初始为nil
+            
+            BOOL success = [fileManager createFileAtPath:@"./3.mp4" contents:nil attributes:nil];
+            if (!success) {
+                NSLog(@"fail to create success");
+            }
+            _appRecoderPath=[[documentsDirectory stringByAppendingPathComponent:@"./3.mp4"] retain];
+            
+            recoderEngine = [[VideoReocderEngine alloc] init];
+            [recoderEngine setSpspps:self.videoDecodeEngine.ppsSps];
+            [recoderEngine CreateRecodeSession:_videoDecodeEngine.sourceWidth cy:_videoDecodeEngine.sourceHeight frame:25 pfileName:_appRecoderPath.UTF8String];
+        }
+        _flagStartRecord = YES;
+
         
         
 
@@ -2399,6 +2436,19 @@
     
     [btn setButtonBgImage:imageView highlight:imageView];
 
+}
+-(void)saveVideo
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    bool compatible = UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(_appRecoderPath);
+    if(compatible)
+    {
+        
+        NSLog(@"UIVideoAtPathIsCompatibleWithSavedPhotosAlbum");
+        UISaveVideoAtPathToSavedPhotosAlbum (_appRecoderPath, self, nil, nil);
+        
+    }
+    [pool release];
 }
 
 - (IBAction)takePhotoAction:(id)sender {

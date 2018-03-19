@@ -183,6 +183,9 @@
 @property (retain, nonatomic) IBOutlet UIImageView *sdcardImageView;
 @property (retain, nonatomic) IBOutlet UIImageView *batteryImageView;
 @property (retain, nonatomic) IBOutlet UILabel *sdcardLabel;
+
+@property (retain, nonatomic) VideoReocderEngine * recoderEngine;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil info:(CameraInfoData *)Info;
 - (id)initWithDict:(CameraInfoData *)Info;
 
